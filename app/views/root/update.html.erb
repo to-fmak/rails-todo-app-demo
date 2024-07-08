@@ -1,0 +1,18 @@
+<%= render "header" %>
+<form action="/update/<%= @post.id %>" method="post">
+    <%= hidden_field_tag "_method", "put" %>
+    <%= token_tag %>
+    <div class="col-6" style="margin: 0 auto">
+        <div class="mb-3">
+            <label for="titleid" class="form-label">Title</label>
+            <input name="title" type="text" class="form-control" id="titleid" value="<%= @post.title %>">
+        </div>
+        <div class="mb-3">
+            <label for="descriptionid" class="form-label">Description</label>
+            <textarea name="description" class="form-control" id="descriptionid" rows="3"><%= @post.description %></textarea>
+        </div>
+        <div class="mb-3">
+            <input type="submit" class="btn btn-primary" value="Update" style="display: block; margin: 0 auto">
+        </div>
+    </div>
+</form>
