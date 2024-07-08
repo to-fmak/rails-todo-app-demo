@@ -1,0 +1,24 @@
+<%= render "header" %>
+<div class="container">
+  <div class="row">
+    <% @posts.each do |post| %>
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><%= post.title %></h5>
+            <% if post.description.present? %>
+              <p class="card-text"><%= truncate(post.description, length: 50) %></p>
+            <% else %>
+              <p class="card-text">No description available.</p>
+            <% end %>
+            <div class="btn-container">
+              <%= button_to "Update", "/update/#{post.id}", method: :get, class: "btn btn-primary" %>
+              <%= button_to "Delete", "/delete/#{post.id}", method: :delete, class: "btn btn-danger" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+<%= render "footer" %>
